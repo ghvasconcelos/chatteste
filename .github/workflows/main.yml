@@ -1,0 +1,26 @@
+name: CI-SFTP
+ 
+on:
+  push:
+    branches: [ main ]
+ 
+  workflow_dispatch:
+ 
+jobs:
+  deploy-via-sftp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+          
+      - name: SFTP Deploy
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.1
+        with:
+          username: ec2-user
+          server: 34.227.188.122
+          port: 22
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+ 
+          local_path: ./*
+          remote_path: /home/ec2-user/INFRA-CHAT/NS-CHATNEW/
+        
+          args: '-o ConnectTimeout=5'
