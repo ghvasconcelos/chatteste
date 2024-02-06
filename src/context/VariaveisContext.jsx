@@ -10,6 +10,11 @@ export const VariaveisContext = createContext();
 
 export const ContextProvider = ({children}) => {
 
+    const [openReply, setReply] = useState(false);
+    function handleModalReply() {
+       return setReply(!openReply);
+    }
+
     // SECTION --> VARIÁVEIS PARA GUARDAR INSTANCIA E USUARIO LOGADO DO PARÂMETRO
     const [ instanceParam, setInstanceParam ] = useState();
     const [ loggedUserParam, setLoggedUserParam ] = useState();
@@ -60,7 +65,7 @@ export const ContextProvider = ({children}) => {
     const [atendenteLogado, setAtendentesLogado] = useState();
 
     return(
-        <VariaveisContext.Provider value={{ dadosAtendimentos, setDadosAtendimentos, conversaAberta, setConversaAberta, conversaID, setConversaID, filaAtendimento, setFilaAtendimento, nomeContato, setNomeContato, fotoPerfil, setFotoPerfil, nomeAtendente, setAtendente, modalFiltro, setModalFiltro, modalOpcoes, setModalOpcoes, conversasFiltradas, setConversasFiltradas, novaMensagem, setNovaMensagem, contatos, setContatos, dataConversas, setDataConversas, usuarioLogado, setUsuarioLogado, modalAtendentes, setModalAtendentes, modalDepartamento, setModalDepartamento, modalOpenCall, setModalOpenCall, codDepartamento, setCodDepartamento, numeroDeTelefone, setNumeroDeTelefone, possuiAtendente, setPossuiAtendente, departamentoPermitido, setDepartamentoPermitido, atendenteLogado, setAtendentesLogado, conversaIDContatos, setConversaIDContatos, instanceParam, setInstanceParam, loggedUserParam, setLoggedUserParam }}>
+        <VariaveisContext.Provider value={{ handleModalReply, openReply, dadosAtendimentos, setDadosAtendimentos, conversaAberta, setConversaAberta, conversaID, setConversaID, filaAtendimento, setFilaAtendimento, nomeContato, setNomeContato, fotoPerfil, setFotoPerfil, nomeAtendente, setAtendente, modalFiltro, setModalFiltro, modalOpcoes, setModalOpcoes, conversasFiltradas, setConversasFiltradas, novaMensagem, setNovaMensagem, contatos, setContatos, dataConversas, setDataConversas, usuarioLogado, setUsuarioLogado, modalAtendentes, setModalAtendentes, modalDepartamento, setModalDepartamento, modalOpenCall, setModalOpenCall, codDepartamento, setCodDepartamento, numeroDeTelefone, setNumeroDeTelefone, possuiAtendente, setPossuiAtendente, departamentoPermitido, setDepartamentoPermitido, atendenteLogado, setAtendentesLogado, conversaIDContatos, setConversaIDContatos, instanceParam, setInstanceParam, loggedUserParam, setLoggedUserParam }}>
             {children}
         </VariaveisContext.Provider>
     );
